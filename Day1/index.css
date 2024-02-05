@@ -1,0 +1,8 @@
+body {
+  background-color: black;
+  color: white;
+}
+[xyz="abc"]{
+    border: 2px solid rgb(239, 79, 5);
+    background-color: lime;
+}
