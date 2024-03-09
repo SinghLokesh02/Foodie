@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  background-color: coral;
+  justify-content: space-around;
+}
+.logo {
+  width: 50%;
+}
+img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  object-position: center;
+  padding: 10px 0px 0px 0px;
+  border-radius: 50%;
+}
+
+ul {
+  display: flex;
+}
+ul li {
+  list-style: none;
+  margin: 10px 30px;
+  color: white;
+  padding: 10px 0px;
+  font-size: 20px;
+}
+
+ul li:hover {
+  color: black;
+}
+
+/* Card Styling */
+.food-card {
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.food-card:hover {
+  box-shadow: 3px 2px 5px rgb(66, 69, 66);
+}
+.image {
+  padding: 10px;
+}
+#card-image {
+  width: 100%;
+  border-radius: 10px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+.res-name {
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 5px 0px;
+}
+.cuisines {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 10px auto;
+}
+.minute-details {
+  display: flex;
+}
+.star-rating {
+  display: flex;
+  margin: 0px 10px;
+  justify-content: center;
+  align-items: center;
+}
+i {
+  background-color: green;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  padding: 2px;
+}
+.address {
+  font-size: 16px;
+  margin: 10px;
+}
+
+/* Resturant Container Styling */
+.resturant-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
