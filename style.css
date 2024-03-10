@@ -106,3 +106,20 @@ i {
   flex-wrap: wrap;
   gap: 20px;
 }
+
+/* Top Rated Button */
+.filter-btn {
+  padding: 10px;
+}
+.top-rated {
+  background-color: lime;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.top-rated:hover {
+  background-color: green;
+}

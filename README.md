@@ -18,3 +18,43 @@
 - Differential Bundling -> Only send the code that is necessary for the user to run the app on their device.
 - Auto install dependencies
 - Error logging
+
+
+
+// Swiggy Components
+/*
+
+1. Header
+  - Logo
+  - Search
+  - Login
+  - Cart
+2. Body
+  - Carousel
+  - Restaurants
+      -- Resturant Cards
+            - Img
+            - title
+            - Description
+            - star rating
+            - cuisines
+            - deliver tie
+  - Offers
+
+3. Footer
+  - About
+  - Contact
+  - Social Media
+  - copy right
+  - Address
+
+*/
+
+
+
+# React Hooks
+(Normal Js utility functions) Written by React Team to make the functional components more powerful.
+
+- useState() -> Super powerful state variable 
+
+- useEffect()
