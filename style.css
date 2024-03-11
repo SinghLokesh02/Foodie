@@ -110,8 +110,11 @@ i {
 /* Top Rated Button */
 .filter-btn {
   padding: 10px;
+  display: flex;
+  gap: 50px;
 }
-.top-rated {
+.top-rated,
+.search-item-btn {
   background-color: lime;
   color: white;
   padding: 8px 10px;
@@ -122,4 +125,26 @@ i {
 }
 .top-rated:hover {
   background-color: green;
+}
+
+/* Search */
+.search-container {
+  display: flex;
+  gap: 20px;
+}
+
+input[type="text"] {
+  padding: 0px 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+  background-color: #e2dfdf;
+  color: red;
+  font-weight: bold;
+}
+.search-item-btn {
+  background-color: red;
+}
+.search-item-btn:hover {
+  background-color: rgb(175, 4, 4);
 }
