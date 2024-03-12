@@ -1,7 +1,6 @@
 import ResturantCards from "./ResturantCards";
-
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 // Create a function of search on click or Enter
 
 
@@ -69,7 +68,9 @@ const Body = () => {
         {
           // Mapping All the Data
           List_of_resturant.map((resturant) => (
-            <ResturantCards key={resturant.info.id} ResData={resturant} />
+            <Link key={resturant.info.id}  
+            to={"/restaurants/"+resturant.info.id}><ResturantCards ResData={resturant} /></Link>
+            
           ))
         }
       </div>
