@@ -1,8 +1,16 @@
+import User from "./User";
+import UserClass from "./UserClass";
+
 const About = () =>{
     return (
        <div className="about">
          <h1>About Component</h1>
-        <h2>This is some Extra Code</h2>
+        
+        {/* Calling Components with props */}
+         <User name={"Lokesh Singh (function)"} location={"Bhopal"}/>
+
+        <UserClass name={"Sonali Singh function"} location={"Delhi"}/>
+
        </div>
     )
 }

@@ -148,3 +148,10 @@ input[type="text"] {
 .search-item-btn:hover {
   background-color: rgb(175, 4, 4);
 }
+
+
+.user-card{
+  box-shadow: 3px 5px 10px blue;
+  margin: 2vh 10px;
+  padding: 10px;
+}
