@@ -58,3 +58,9 @@
 - useState() -> Super powerful state variable 
 
 - useEffect()
+
+
+
+
+# Github API
+https://api.github.com/users/username

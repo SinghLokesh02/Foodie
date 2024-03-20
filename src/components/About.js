@@ -1,18 +1,27 @@
+import React from "react";
 import User from "./User";
 import UserClass from "./UserClass";
 
-const About = () =>{
+class About extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    // console.log("Parent Constructor")
+  }
+  componentDidMount(){
+    // console.log("Parent Component Did Mount");
+  }
+  render() {
+    console.log("Parent Render");
     return (
-       <div className="about">
-         <h1>About Component</h1>
-        
+      <div className="about">
+        <h1>About Component</h1>
         {/* Calling Components with props */}
-         <User name={"Lokesh Singh (function)"} location={"Bhopal"}/>
-
-        <UserClass name={"Sonali Singh function"} location={"Delhi"}/>
-
-       </div>
-    )
+        <UserClass name={"Lokesh Singh (function)"} location={"Bhopal"} />
+      </div>
+    );
+  }
 }
 
 export default About;
