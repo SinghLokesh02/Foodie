@@ -1,15 +1,28 @@
 // Importing Header, Body
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body"
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu"
-
-
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./components/About";
+import RestaurantMenu from "./components/RestaurantMenu";
 import Contact from "./components/Contact";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+// Lets do lazy Loading for About Us
+// import About from "./components/About";
+// import Grocery from "./components/Grocery";
+
+// Chunking
+// Code Splitting
+// Lazy Loading
+// Dynamic Bundling
+// On demand Loading
+
+// Lazy function of Loading Grocery
+const Grocery = lazy(()=> import("./components/Grocery"));
+const About = lazy(()=> import("./components/About"));
+
+
 
 const AppLayout = () => {
   return (
@@ -35,7 +48,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path:"/about",
-        element:<About/>,
+        element: <Suspense fallback={<h1>The Data is Loading ...</h1>}><About/></Suspense>
       },
       {
         path:"/contact",
@@ -44,6 +57,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/restaurants/:resId",
         element: <RestaurantMenu/>
+      },
+      {
+        path:"/grocery/",
+        element: <Suspense fallback= { <h1>The Data is Loading....</h1> }><Grocery/></Suspense>
       },
     ],
     errorElement:<Error/>

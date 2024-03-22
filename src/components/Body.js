@@ -1,6 +1,7 @@
 import ResturantCards from "./ResturantCards";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // Create a function of search on click or Enter
 
 
@@ -33,6 +34,15 @@ const Body = () => {
       ?.restaurants;
       setList_of_resturant(cardData);
     };
+
+
+    // Checking Online Status
+    if(!useOnlineStatus()) return (
+      <div className="center">
+        <h1>You are Offline Bro !!! 😐😐😐</h1>
+      </div>
+    )
+    else
     return (
     <div className="body">
       <div className="filter-btn">
