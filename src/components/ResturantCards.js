@@ -11,7 +11,7 @@ const ResturantCards = ({ ResData }) => {
   const { name, cloudinaryImageId, cuisines, avgRating } = ResData.info;
 
   return (
-    <div className="food-card w-80 p-5 rounded hover:shadow-2xl ">
+    <div className="food-card w-80 p-5 rounded hover:shadow-2xl">
       <div className="image">
         <img
           src={CDN_LINK + cloudinaryImageId}
@@ -38,4 +38,37 @@ const ResturantCards = ({ ResData }) => {
   );
 };
 
+// Higher Order Component -> Take Input a component and Return a Component
+// Input -> RestaurantCard ==>> RestaurantCardPromoted
+
+export const withPromotedLabel = (RestaurantCards) => {
+  return (props) => {
+    return (
+      <div>
+        <label htmlFor="">Promoted</label>
+        <ResturantCards {...props} />
+      </div>
+    );
+  };
+};
+
+export const withFlatTag = (ResturantCards) => {
+  return (props) => {
+    // console.log(props.ResData.info.aggregatedDiscountInfoV3);
+    const { header, subHeader } = props.ResData.info.aggregatedDiscountInfoV3;
+    return (
+      <div className="relative">
+        <ResturantCards {...props} />
+        <div className="label flex justify-center font-medium text-white mb-3">
+          <label
+            htmlFor=""
+            className="absolute top-40 text-center  bg-slate-500 w-4/5 rounded "
+          >
+            {header + "  " + subHeader}
+          </label>
+        </div>
+      </div>
+    );
+  };
+};
 export default ResturantCards;
