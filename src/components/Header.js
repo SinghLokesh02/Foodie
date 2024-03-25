@@ -4,11 +4,17 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useState, useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { UseSelector, useSelector } from "react-redux";
 
 const Header = () => {
   const { loggedinUser } = useContext(UserContext);
   const [loginInfo, setLoginInfo] = useState("Login");
   const onlinestatus = useOnlineStatus();
+
+  // Selector (It is a Hook)
+  // Subscribing to the store using Selector
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="header justify-between px-5 pb-0 bg-orange-600 shadow-lg flex flex-col md:flex-row">
       <div className="logo sm:w-15 md:w-20 md:my-auto p-2 m-auto md:m-0">
@@ -32,9 +38,17 @@ const Header = () => {
           <li className="list-items hover:text-white text-center font-serif text-2xl md:text-base md:text-left">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="list-items hover:text-white text-center font-serif text-2xl md:text-base md:text-left">
-            Cart
+          <li className="list-items hover:text-white text-center font-serif text-2xl md:text-base md:text-left relative">
+            <Link to="/cart">Cart</Link>
+            {cartItems.length > 0 && (
+              <span className="absolute top-[-18px] right-[-20px] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs bg-lime-500">
+                <span className="inline-block align-middle">
+                  {cartItems.length}
+                </span>
+              </span>
+            )}
           </li>
+
           <li
             className="list-items hover:text-white cursor-pointer font-serif text-2xl md:text-base text-center md:text-left"
             onClick={() => {

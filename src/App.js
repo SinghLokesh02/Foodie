@@ -8,6 +8,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // Lets do lazy Loading for About Us
 // import About from "./components/About";
@@ -34,13 +37,15 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <div className="app">
-      <UserContext.Provider value={{ loggedinUser: userName, setUserName }}>
+    <Provider store={appStore}>
+    <UserContext.Provider value={{ loggedinUser: userName, setUserName }}>
+      <div className="app">
         {/* Header Component */}
         <Header />
         <Outlet />
-      </UserContext.Provider>
-    </div>
+      </div>
+    </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -66,6 +71,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurants/:resId",
