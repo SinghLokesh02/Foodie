@@ -5,10 +5,11 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { withPromotedLabel, withFlatTag } from "./ResturantCards";
 import UserContext from "../utils/UserContext";
 // Create a function of search on click or Enter
+import Shimmer from "./Shimmer";
 
 // Body Component
 const Body = () => {
-  const { loggedinUser, setUserName } = useContext(UserContext);
+  const { loggedinUser, setUserName } = useContext(UserContext);``
 
   // State Variable -> Super Powerful Variable
   const [List_of_resturant, setList_of_resturant] = useState([]);
@@ -47,9 +48,9 @@ const Body = () => {
       <div className="center">
         <h1>You are Offline Bro !!! 😐😐😐</h1>
       </div>
-    );
-  else
-    return (
+    );   
+    
+    return List_of_resturant.length === 0? (<Shimmer/>) :(
       <div className="body">
         <div className="filter-btn flex flex-col md:flex-row gap-8 p-5 md:p-10">
           <div className="search-container flex flex-col md:flex-row gap-5 md:gap-10">

@@ -11,7 +11,6 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-
 // Lets do lazy Loading for About Us
 // import About from "./components/About";
 // import Grocery from "./components/Grocery";
@@ -94,5 +93,4 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
-
 root.render(<RouterProvider router={appRouter} />);

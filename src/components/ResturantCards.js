@@ -8,10 +8,12 @@ const ResturantCards = ({ ResData }) => {
     console.error("ResData or ResData.info is undefined");
     return null;
   }
-  const { name, cloudinaryImageId, cuisines, avgRating } = ResData.info;
+  const { name, cloudinaryImageId, cuisines, avgRating, costForTwo } =
+    ResData.info;
+  console.log(ResData.info);
 
   return (
-    <div className="food-card w-80 p-5 rounded hover:shadow-2xl">
+    <div className="food-card w-80 p-5 rounded shadow-2xl ring ring-gray-200 ring-offset-4 transition-transform duration-100 ease-in-out transform hover:scale-105">
       <div className="image">
         <img
           src={CDN_LINK + cloudinaryImageId}
@@ -20,20 +22,26 @@ const ResturantCards = ({ ResData }) => {
           className="rounded h-40 w-80"
         />
       </div>
-      <h1 className="res-name font-bold my-2 font-serif whitespace-nowrap overflow-hidden text-ellipsis">
+      <h1 className="res-name font-bold my-2 font-serif whitespace-nowrap overflow-hidden text-ellipsis mt-3">
         {name}
       </h1>
-      <h4 className="cuisines whitespace-nowrap overflow-hidden text-ellipsis font-serif">
+      <h4 className="cuisines whitespace-nowrap overflow-hidden text-ellipsis font-serif text-sm">
         {cuisines.join(", ")}
       </h4>
-      <div className="minute-details flex gap-2">
-        <div className="star-rating flex gap-1.5">
-          <i className="ri-star-fill text-green-600"></i>
-          <h3 className="start">{avgRating}</h3>
-        </div>
-        <h3 className="time"> - {ResData.info.sla.lastMileTravelString}</h3>
-      </div>
       <p className="address">{ResData.info.locality}</p>
+      <div className="content flex w-full gap-6 mt-3">
+        <div className="minute-details flex gap-2">
+          <div className="star-rating flex gap-1.5 bg-green-600 px-2 rounded py-1">
+            <i className="ri-star-fill  text-white text-sm font-bold"></i>
+            <h3 className="start text-white text-sm font-bold">{avgRating}</h3>
+          </div>
+          <h3 className="time text-sm font-bold ml-3">
+            {" "}
+             {ResData.info.sla.lastMileTravelString}
+          </h3>
+          <h3 className="time text-sm font-bold ml-3">  {costForTwo}</h3>
+        </div>
+      </div>
     </div>
   );
 };
