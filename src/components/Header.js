@@ -30,10 +30,10 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="list-items hover:bg-red-500 py-3 px-2 rounded-xl text-center font-serif md:text-base md:text-left">
-            <Link to="/about">About Us</Link>
+            <Link to="/about">About</Link>
           </li>
           <li className="list-items hover:bg-red-500 py-3 px-2 rounded-xl text-center font-serif md:text-base md:text-left">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li className="list-items hover:bg-red-500 py-3 px-2 rounded-xl text-center font-serif md:text-base md:text-left hidden">
             <Link to="/grocery">Grocery</Link>
