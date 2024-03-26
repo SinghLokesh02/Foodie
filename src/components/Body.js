@@ -52,14 +52,15 @@ const Body = () => {
     
     return List_of_resturant.length === 0? (<Shimmer/>) :(
       <div className="body">
-        <div className="filter-btn flex flex-col md:flex-row gap-8 p-5 md:p-10">
-          <div className="search-container flex flex-col md:flex-row gap-5 md:gap-10">
+        <div className="p-5 md:p-10 flex flex-col md:gap-0 sm:gap-3">
+         <div className="search-box flex flex-col md:flex-row md:gap-0 gap-5">
+         <div className="search-container flex flex-col md:flex-row m-auto w-full justify-center">
             <input
               type="text"
               name="search"
               id=""
               placeholder="Search Here"
-              className="border-2 px-5 py-2 md:py-1 w-4/5 md:w-56 m-auto"
+              className="px-5 py-2 md:py-1 md:w-96 border outline-[2px] focus:bg-transparent focus:outline-none focus:border-lime-500"
               value={searchText}
               onChange={(e) => {
                 setsearchText(e.target.value);
@@ -70,12 +71,14 @@ const Body = () => {
             />
             <button
               onClick={() => FilterRestaurants()}
-              className="search-item-btn bg-green-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium m-auto w-4/5 md:w-66"
+              className="search-item-btn bg-green-500 px-6 py-2 md:px-7 md:py-1 text-white rounded font-medium md:w-66 relative md:right-6 sm:right-0"
             >
               Search
             </button>
           </div>
-          <button
+         </div>
+        <div className="top-rated-restaurants w-full md:m-0 sm:m-auto flex sm:justify-center md:justify-start">
+        <button
             className="top-rated bg-red-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium self-start md:self-center w-4/5 md:w-56 m-auto md:m-0"
             onClick={() => {
               FilteredList = List_of_resturant.filter(
@@ -86,8 +89,9 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
 
-          <div className="change-user">
+          <div className="change-user hidden">
             <label htmlFor="username">Username : </label>
             <input
               type="text"
