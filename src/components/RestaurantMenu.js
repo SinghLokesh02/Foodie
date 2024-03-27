@@ -13,10 +13,10 @@ const RestaurantMenu = () => {
     return  <RestaurantCategoryShimmer/>
   };
 
-  const { name, cuisines, costForTwoMessage } =
+  const { name, cuisines, costForTwoMessage,cloudinaryImageId, city } =
     resInfo?.cards[2]?.card?.card?.info;
 
-  console.log(resInfo);
+  console.log(resInfo?.cards[2]?.card?.card?.info);
 
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
@@ -35,11 +35,19 @@ const RestaurantMenu = () => {
 
   return (
     <div className="container">
-      <div className="hotel text-center">
-        <h1 className="font-bold m-5 text-2xl font-serif">{name}</h1>
+      <div className="hotel text-center flex justify-center gap-3 my-3 bg-gray-300 py-3">
+        <div className="image">
+          <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+ cloudinaryImageId}
+          className="h-30 w-40 rounded-xl"/>
+        </div>
+       <div className="text-hotel my-auto">
+       <h1 className="font-bold m-5 text-2xl font-serif">{name}</h1>
         <p className="font-medium">
           {cuisines.join(", ")} - {costForTwoMessage}
         </p>
+        <p className="font-serif">{city}</p>
+       </div>
+        </div>
         {/* Category Accordian */}
         {categories.map((category, index) => (
           <RestaurantCategory
@@ -49,7 +57,6 @@ const RestaurantMenu = () => {
             setShowIndex={() => setShowIndex(index)}
           />
         ))}
-      </div>
     </div>
   );
 };

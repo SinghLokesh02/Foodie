@@ -9,13 +9,14 @@ import Shimmer from "./Shimmer";
 
 // Body Component
 const Body = () => {
-  const { loggedinUser, setUserName } = useContext(UserContext);``
+  const { loggedinUser, setUserName } = useContext(UserContext);
+  const [isloading, setIsLoading] = useState(true)
 
   // State Variable -> Super Powerful Variable
-  const [List_of_resturant, setList_of_resturant] = useState([]);
+  const [list_of_resturant, setList_of_resturant] = useState([]);
   const [searchText, setsearchText] = useState("");
   const FilterRestaurants = () => {
-    FilteredRes = List_of_resturant.filter((res) =>
+    FilteredRes = list_of_resturant.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setList_of_resturant(FilteredRes);
@@ -40,6 +41,7 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setList_of_resturant(cardData);
+    setIsLoading(false);
   };
 
   // Checking Online Status
@@ -50,7 +52,7 @@ const Body = () => {
       </div>
     );   
     
-    return List_of_resturant.length === 0? (<Shimmer/>) :(
+    return  isloading ?  <Shimmer/>:(
       <div className="body">
         <div className="p-5 md:p-10 flex flex-col md:gap-0 sm:gap-3">
          <div className="search-box flex flex-col md:flex-row md:gap-0 gap-5">
@@ -66,7 +68,7 @@ const Body = () => {
                 setsearchText(e.target.value);
                 e.target.value === ""
                   ? fetchData()
-                  : setList_of_resturant(List_of_resturant);
+                  : setList_of_resturant(list_of_resturant);
               }}
             />
             <button
@@ -81,7 +83,7 @@ const Body = () => {
         <button
             className="top-rated bg-red-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium self-start md:self-center w-4/5 md:w-56 m-auto md:m-0"
             onClick={() => {
-              FilteredList = List_of_resturant.filter(
+              FilteredList = list_of_resturant.filter(
                 (res) => res.info.avgRating > 4
               );
               setList_of_resturant(FilteredList);
@@ -107,7 +109,7 @@ const Body = () => {
         <div className="resturant-container flex flex-wrap gap-10 justify-center p-10 pt-0">
           {
             // Mapping All the Data
-            List_of_resturant.map((resturant) => (
+              list_of_resturant.map((resturant) => (
               <Link
                 key={resturant.info.id}
                 to={"/restaurants/" + resturant.info.id}
