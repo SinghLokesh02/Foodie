@@ -9,14 +9,23 @@ import Shimmer from "./Shimmer";
 
 // Body Component
 const Body = () => {
-  const { loggedinUser, setUserName } = useContext(UserContext);``
+  const { loggedinUser, setUserName } = useContext(UserContext);
+  const [isloading, setIsLoading] = useState(true)
 
   // State Variable -> Super Powerful Variable
+<<<<<<< HEAD
   const [list_of_restaurant, setlist_of_restaurant] = useState([]);
+=======
+  const [list_of_resturant, setList_of_resturant] = useState([]);
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
   const [searchText, setsearchText] = useState("");
   const [isloading, setIsLoading] = useState(true);
   const FilterRestaurants = () => {
+<<<<<<< HEAD
     FilteredRes = list_of_restaurant.filter((res) =>
+=======
+    FilteredRes = list_of_resturant.filter((res) =>
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setlist_of_restaurant(FilteredRes);
@@ -40,8 +49,12 @@ const Body = () => {
     const cardData =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
+<<<<<<< HEAD
         // console.log(json);
     setlist_of_restaurant(cardData);
+=======
+    setList_of_resturant(cardData);
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
     setIsLoading(false);
   };
 
@@ -53,7 +66,11 @@ const Body = () => {
       </div>
     );   
     
+<<<<<<< HEAD
     return isloading ? (<Shimmer/>) :(
+=======
+    return  isloading ?  <Shimmer/>:(
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
       <div className="body">
         <div className="p-5 md:p-10 flex flex-col md:gap-0 sm:gap-3">
          <div className="search-box flex flex-col md:flex-row md:gap-0 gap-5">
@@ -69,7 +86,11 @@ const Body = () => {
                 setsearchText(e.target.value);
                 e.target.value === ""
                   ? fetchData()
+<<<<<<< HEAD
                   : setlist_of_restaurant(list_of_restaurant);
+=======
+                  : setList_of_resturant(list_of_resturant);
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
               }}
             />
             <button
@@ -84,7 +105,11 @@ const Body = () => {
         <button
             className="top-rated bg-red-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium self-start md:self-center md:w-56 mx-auto my-3 md:m-0 w-full"
             onClick={() => {
+<<<<<<< HEAD
               FilteredList = list_of_restaurant.filter(
+=======
+              FilteredList = list_of_resturant.filter(
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
                 (res) => res.info.avgRating > 4
               );
               setlist_of_restaurant(FilteredList);
@@ -110,7 +135,11 @@ const Body = () => {
         <div className="resturant-container flex flex-wrap gap-10 justify-center p-10 pt-0">
           {
             // Mapping All the Data
+<<<<<<< HEAD
             list_of_restaurant?.map((resturant) => (
+=======
+              list_of_resturant.map((resturant) => (
+>>>>>>> f03daf7954f7ea6fab7df1c418c68c4302cd9721
               <Link
                 key={resturant?.info?.id}
                 to={"/restaurants/" + resturant.info.id}
