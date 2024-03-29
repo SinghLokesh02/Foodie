@@ -49,7 +49,7 @@ const Header = () => {
             )}
           </li>
 
-          <li
+          <li name="login"
             className="list-items hover:bg-red-500 py-3 px-2 rounded-xl cursor-pointer font-serif md:text-base text-center md:text-left"
             onClick={() => {
               loginInfo === "Login"

@@ -10,7 +10,7 @@ const ResturantCards = ({ ResData }) => {
   }
   const { name, cloudinaryImageId, cuisines, avgRating, costForTwo } =
     ResData.info;
-  console.log(ResData.info);
+  // console.log(ResData.info);
 
   return (
     <div className="food-card w-80 p-5 rounded shadow-2xl ring ring-gray-200 ring-offset-4 transition-transform duration-100 ease-in-out transform hover:scale-105">

@@ -1,10 +1,22 @@
 import ItemList from "./ItemList";
-import { useState } from "react";
+import { useEffect } from "react";
 
-const RestaurantCategory = ({ data, isOpen, setShowIndex }) => {
+const RestaurantCategory = ({ data, isOpen, setShowIndex ,currentIndex}) => {
   function handleClick() {
-    setShowIndex();
+    setShowIndex(prevIndex=> {
+      console.log(currentIndex,prevIndex);
+      return prevIndex === currentIndex ? -1 : currentIndex
+    });
   }
+
+  useEffect(() => {
+    console.log("Current Index:", currentIndex);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    console.log("Is Open:", isOpen);
+  }, [isOpen]);
+
 
   return (
     <div>

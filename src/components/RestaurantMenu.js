@@ -13,10 +13,10 @@ const RestaurantMenu = () => {
     return  <RestaurantCategoryShimmer/>
   };
 
-  const { name, cuisines, costForTwoMessage } =
+  const { name, cuisines, costForTwoMessage,cloudinaryImageId,city } =
     resInfo?.cards[2]?.card?.card?.info;
 
-  console.log(resInfo);
+  // console.log(resInfo);
 
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
@@ -33,24 +33,32 @@ const RestaurantMenu = () => {
 
   // console.log(categories);
 
-  return (
-    <div className="container">
-      <div className="hotel text-center">
-        <h1 className="font-bold m-5 text-2xl font-serif">{name}</h1>
-        <p className="font-medium">
-          {cuisines.join(", ")} - {costForTwoMessage}
-        </p>
-        {/* Category Accordian */}
-        {categories.map((category, index) => (
-          <RestaurantCategory
-            key={category.card.card.title}
-            data={category?.card?.card}
-            isOpen={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
-          />
-        ))}
-      </div>
+ return(
+  <div className="container">
+  <div className="hotel text-center flex justify-center gap-3 my-3 bg-black text-white py-3">
+    <div className="image">
+      <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+ cloudinaryImageId}
+      className="md:h-[150px] md:w-[200px] rounded-xl md:object-cover h-[100px] w-[150px] md:m0 m-3"/>
     </div>
-  );
+   <div className="text-hotel my-auto">
+   <h1 className="font-bold md:m-5 md:text-2xl font-serif text-md m-1">{name}</h1>
+    <p className="font-medium text-sm md:text-md">
+      {cuisines.join(", ")} - {costForTwoMessage}
+    </p>
+    <p className="font-serif">{city}</p>
+   </div>
+    </div>
+    {/* Category Accordian */}
+    {categories.map((category, index) => (
+      <RestaurantCategory
+        key={category.card.card.title}
+        data={category?.card?.card}
+        isOpen={index === showIndex}
+        setShowIndex={() => setShowIndex(index)}
+        currentIndex={index} // Passing the Current Index
+      />
+    ))}
+</div>
+);
 };
 export default RestaurantMenu;

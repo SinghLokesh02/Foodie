@@ -12,9 +12,6 @@ const handleAddItem = (Item) =>{
 }
 
 
-
-
-
 //   console.log(items);
   return (
     <div className="itemlist p-3 pt-0">

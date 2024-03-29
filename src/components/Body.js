@@ -12,13 +12,14 @@ const Body = () => {
   const { loggedinUser, setUserName } = useContext(UserContext);``
 
   // State Variable -> Super Powerful Variable
-  const [List_of_resturant, setList_of_resturant] = useState([]);
+  const [list_of_restaurant, setlist_of_restaurant] = useState([]);
   const [searchText, setsearchText] = useState("");
+  const [isloading, setIsLoading] = useState(true);
   const FilterRestaurants = () => {
-    FilteredRes = List_of_resturant.filter((res) =>
+    FilteredRes = list_of_restaurant.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    setList_of_resturant(FilteredRes);
+    setlist_of_restaurant(FilteredRes);
   };
 
   // Creating a Card with Promoted Label
@@ -39,7 +40,9 @@ const Body = () => {
     const cardData =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    setList_of_resturant(cardData);
+        // console.log(json);
+    setlist_of_restaurant(cardData);
+    setIsLoading(false);
   };
 
   // Checking Online Status
@@ -50,7 +53,7 @@ const Body = () => {
       </div>
     );   
     
-    return List_of_resturant.length === 0? (<Shimmer/>) :(
+    return isloading ? (<Shimmer/>) :(
       <div className="body">
         <div className="p-5 md:p-10 flex flex-col md:gap-0 sm:gap-3">
          <div className="search-box flex flex-col md:flex-row md:gap-0 gap-5">
@@ -60,18 +63,18 @@ const Body = () => {
               name="search"
               id=""
               placeholder="Search Here"
-              className="px-5 py-2 md:py-1 md:w-96 border outline-[2px] focus:bg-transparent focus:outline-none focus:border-lime-500"
+              className="px-5 py-2 md:py-1 md:w-96 border outline-[2px] focus:bg-transparent focus:outline-none focus:border-lime-500 md:mx-0 md:my-0 mx-auto my-4 w-full rounded-lg"
               value={searchText}
               onChange={(e) => {
                 setsearchText(e.target.value);
                 e.target.value === ""
                   ? fetchData()
-                  : setList_of_resturant(List_of_resturant);
+                  : setlist_of_restaurant(list_of_restaurant);
               }}
             />
             <button
               onClick={() => FilterRestaurants()}
-              className="search-item-btn bg-green-500 px-6 py-2 md:px-7 md:py-1 text-white rounded font-medium md:w-66 relative md:right-6 sm:right-0"
+              className="search-item-btn bg-green-500 px-6 py-2 md:px-7 md:py-1 text-white rounded font-medium md:w-66 relative md:right-6 sm:right-0 md:w-fit w-full"
             >
               Search
             </button>
@@ -79,12 +82,12 @@ const Body = () => {
          </div>
         <div className="top-rated-restaurants w-full md:m-0 sm:m-auto flex sm:justify-center md:justify-start">
         <button
-            className="top-rated bg-red-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium self-start md:self-center w-4/5 md:w-56 m-auto md:m-0"
+            className="top-rated bg-red-500 px-6 py-2 md:px-4 md:py-1 text-white rounded font-medium self-start md:self-center md:w-56 mx-auto my-3 md:m-0 w-full"
             onClick={() => {
-              FilteredList = List_of_resturant.filter(
+              FilteredList = list_of_restaurant.filter(
                 (res) => res.info.avgRating > 4
               );
-              setList_of_resturant(FilteredList);
+              setlist_of_restaurant(FilteredList);
             }}
           >
             Top Rated Restaurants
@@ -107,16 +110,16 @@ const Body = () => {
         <div className="resturant-container flex flex-wrap gap-10 justify-center p-10 pt-0">
           {
             // Mapping All the Data
-            List_of_resturant.map((resturant) => (
+            list_of_restaurant?.map((resturant) => (
               <Link
-                key={resturant.info.id}
+                key={resturant?.info?.id}
                 to={"/restaurants/" + resturant.info.id}
               >
                 {/* Card with Promoted Stamp */}
                 {/* { resturant.info.promoted ? <RestaurantCardPromoted ResData={resturant} /> :  <ResturantCards ResData={resturant} />} */}
 
                 {/* Card with Discount Stamp */}
-                {resturant.info.aggregatedDiscountInfoV3 ? (
+                {resturant?.info?.aggregatedDiscountInfoV3 ? (
                   <RestaurantFlatDiscount ResData={resturant} />
                 ) : (
                   <ResturantCards ResData={resturant} />
