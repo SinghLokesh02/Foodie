@@ -3,6 +3,7 @@ import { CDN_LINK } from "../utils/constants";
 // Resturant Card
 
 const ResturantCards = ({ ResData }) => {
+  console.log(ResData);
   if (!ResData?.info) {
     // Handle the case where ResData.info is undefined
     console.error("ResData or ResData.info is undefined");
